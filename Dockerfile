@@ -1,7 +1,5 @@
 FROM alpine:edge
 
-LABEL MAINTAINERS="Guillaume Scheibel <guillaume.scheibel@gmail.com>, Damien DUPORTAL <damien.duportal@gmail.com>"
-
 ARG asciidoctor_version=1.5.7.1
 ARG asciidoctor_pdf_version=1.5.0.alpha.16
 
