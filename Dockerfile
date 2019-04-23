@@ -1,10 +1,6 @@
 FROM alpine:edge
 
-ARG asciidoctor_version=1.5.7.1
-ARG asciidoctor_pdf_version=1.5.0.alpha.16
-
-ENV ASCIIDOCTOR_VERSION=${asciidoctor_version} \
-  ASCIIDOCTOR_PDF_VERSION=${asciidoctor_pdf_version}
+ENV ASCIIDOCTOR_VERSION=${asciidoctor_version}
 
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
@@ -12,7 +8,7 @@ RUN apk update
 
 # Installing package required for the runtime of
 # any of the asciidoctor-* functionnalities
-RUN apk add --no-cache \
+RUN apk update && apk add --no-cache \
     bash \
     curl \
     ca-certificates \
@@ -29,7 +25,8 @@ RUN apk add --no-cache \
     ttf-liberation \
     unzip \
     which \
-    font-ipa@testing
+    font-ipa@testing \
+    wqy-zenhei@testing
 
 # Installing Ruby Gems needed in the image
 # including asciidoctor itself
@@ -38,23 +35,18 @@ RUN apk add --no-cache --virtual .rubymakedepends \
     libxml2-dev \
     ruby-dev \
   && gem install --no-document \
-    "asciidoctor:${ASCIIDOCTOR_VERSION}" \
-    asciidoctor-confluence \
+    asciidoctor \
     asciidoctor-diagram \
-    asciidoctor-epub3:1.5.0.alpha.7 \
     asciidoctor-mathematical \
-    "asciidoctor-pdf:${ASCIIDOCTOR_PDF_VERSION}" \
-    asciidoctor-revealjs \
     coderay \
-    epubcheck:3.0.1 \
     haml \
-    kindlegen:3.0.3 \
     pygments.rb \
     rake \
     rouge \
     slim \
     thread_safe \
     tilt \
+    nokogiri \
   && apk del -r --no-cache .rubymakedepends
 
 # Installing Python dependencies for additional
@@ -76,4 +68,5 @@ RUN rm -rf /var/cache/apk/*
 WORKDIR /documents
 VOLUME /documents
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["asciidoctor"]
+CMD []
