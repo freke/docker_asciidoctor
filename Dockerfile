@@ -1,4 +1,4 @@
-ROM alpine:edge
+FROM alpine:edge
 
 ARG asciidoctor_version=2.0.8
 ARG asciidoctor_diagram_version=1.5.16
