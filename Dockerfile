@@ -5,12 +5,14 @@ ARG asciidoctor_diagram_version=1.5.16
 ARG asciidoctor_pdf_version=1.5.0.alpha.17
 ARG asciidoctor_epub3_version=1.5.0.alpha.9
 ARG asciidoctor_mathematical_version=0.3.0
+ARG asciidoctor_interdoc_reftext=0.5.0
 
 ENV ASCIIDOCTOR_VERSION=${asciidoctor_version} \
   ASCIIDOCTOR_DIAGRAM_VERSION=${asciidoctor_diagram_version} \
   ASCIIDOCTOR_PDF_VERSION=${asciidoctor_pdf_version} \
   ASCIIDOCTOR_EPUB3_VERSION=${asciidoctor_epub3_version} \
-  ASCIIDOCTOR_MATHEMATICAL_VERSION=${asciidoctor_mathematical_version}
+  ASCIIDOCTOR_MATHEMATICAL_VERSION=${asciidoctor_mathematical_version} \
+  ASCIIDOCTOR_INTERDOC_REFTEXT_VERSION=${asciidoctor_interdoc_reftext}
 
 
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
@@ -50,6 +52,7 @@ RUN apk add --no-cache --virtual .rubymakedepends \
     asciidoctor-epub3:${ASCIIDOCTOR_EPUB3_VERSION} \
     asciidoctor-mathematical:${ASCIIDOCTOR_MATHEMATICAL_VERSION} \
     asciidoctor-pdf:${ASCIIDOCTOR_PDF_VERSION} \
+    asciidoctor-interdoc-reftext:${ASCIIDOCTOR_INTERDOC_REFTEXT_VERSION} \
     coderay \
     epubcheck \
     haml \
@@ -82,4 +85,3 @@ WORKDIR /documents
 VOLUME /documents
 
 CMD ["/bin/bash"]
-
