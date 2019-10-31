@@ -19,7 +19,7 @@ RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/re
 
 # Installing package required for the runtime of
 # any of the asciidoctor-* functionnalities
-RUN apk update && apk add --no-cache \
+RUN apk update && apk upgrade && apk add --no-cache \
     bash \
     curl \
     ca-certificates \

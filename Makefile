@@ -1,4 +1,4 @@
 all: docker
 
 docker:
-	docker build --force-rm --pull --network="host" -t freke/docker_asciidoctor .
+	docker build --no-cache --force-rm --pull --network="host" -t freke/docker_asciidoctor .
