@@ -1,9 +1,9 @@
 FROM alpine:edge
 
 ARG asciidoctor_version=2.0.10
-ARG asciidoctor_diagram_version=1.5.18
-ARG asciidoctor_pdf_version=1.5.0.alpha.18
-ARG asciidoctor_epub3_version=1.5.0.alpha.9
+ARG asciidoctor_diagram_version=2.0.1
+ARG asciidoctor_pdf_version=1.5.0.rc.2
+ARG asciidoctor_epub3_version=1.5.0.alpha.11
 ARG asciidoctor_mathematical_version=0.3.0
 ARG asciidoctor_interdoc_reftext=0.5.0
 
@@ -12,10 +12,12 @@ ENV ASCIIDOCTOR_VERSION=${asciidoctor_version} \
   ASCIIDOCTOR_PDF_VERSION=${asciidoctor_pdf_version} \
   ASCIIDOCTOR_EPUB3_VERSION=${asciidoctor_epub3_version} \
   ASCIIDOCTOR_MATHEMATICAL_VERSION=${asciidoctor_mathematical_version} \
-  ASCIIDOCTOR_INTERDOC_REFTEXT_VERSION=${asciidoctor_interdoc_reftext}
-
+  ASCIIDOCTOR_INTERDOC_REFTEXT_VERSION=${asciidoctor_interdoc_reftext} \
+  JAVA_OPTS="-Djava.util.prefs.systemRoot=/java -Djava.util.prefs.userRoot=/java/.userPrefs"
 
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+
+RUN mkdir -p /java
 
 # Installing package required for the runtime of
 # any of the asciidoctor-* functionnalities
@@ -28,9 +30,9 @@ RUN apk update && apk upgrade && apk add --no-cache \
     graphviz \
     make \
     openjdk8-jre \
-    py2-pillow \
+    py3-pillow \
     py-setuptools \
-    python2 \
+    python3 \
     ruby \
     ruby-mathematical \
     ttf-liberation \
@@ -71,9 +73,8 @@ RUN apk add --no-cache --virtual .rubymakedepends \
 # functionnalities as diagrams or syntax highligthing
 RUN apk add --no-cache --virtual .pythonmakedepends \
     build-base \
-    python2-dev \
-    py2-pip \
-  && pip install --no-cache-dir \
+    python3-dev \
+  && pip3 install --no-cache-dir \
     actdiag \
     'blockdiag[pdf]' \
     nwdiag \
