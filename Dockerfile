@@ -2,9 +2,9 @@ FROM alpine:edge
 
 ARG asciidoctor_version=2.0.10
 ARG asciidoctor_diagram_version=2.0.1
-ARG asciidoctor_pdf_version=1.5.0.rc.2
+ARG asciidoctor_pdf_version=1.5.3
 ARG asciidoctor_epub3_version=1.5.0.alpha.11
-ARG asciidoctor_mathematical_version=0.3.0
+ARG asciidoctor_mathematical_version=0.3.1
 ARG asciidoctor_interdoc_reftext=0.5.0
 
 ENV ASCIIDOCTOR_VERSION=${asciidoctor_version} \
@@ -30,6 +30,7 @@ RUN apk update && apk upgrade && apk add --no-cache \
     graphviz \
     make \
     openjdk8-jre \
+    py3-pip \
     py3-pillow \
     py-setuptools \
     python3 \
