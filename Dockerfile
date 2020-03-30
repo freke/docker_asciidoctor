@@ -3,9 +3,9 @@ FROM alpine:edge
 ARG asciidoctor_version=2.0.10
 ARG asciidoctor_diagram_version=2.0.1
 ARG asciidoctor_pdf_version=1.5.3
-ARG asciidoctor_epub3_version=1.5.0.alpha.11
+ARG asciidoctor_epub3_version=1.5.0.alpha.15
 ARG asciidoctor_mathematical_version=0.3.1
-ARG asciidoctor_interdoc_reftext=0.5.0
+ARG asciidoctor_interdoc_reftext=0.5.1
 
 ENV ASCIIDOCTOR_VERSION=${asciidoctor_version} \
   ASCIIDOCTOR_DIAGRAM_VERSION=${asciidoctor_diagram_version} \
