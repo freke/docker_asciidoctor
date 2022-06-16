@@ -1,0 +1,27 @@
+README for IPA and IPAex font bundle
+====================================
+Version: 2019-09-05
+
+These are both the IPA and IPAex fonts as provided at
+	http://ipafont.ipa.go.jp/
+The license of the fonts can be found in the accompanying file
+IPA_Font_License_Agreement_v1.0.txt
+
+The map files that have been previously included have been removed,
+as they are now maintained in the jfontmaps package, see
+http://www.ctan.org/pkg/jfontmaps
+
+This packages has been put together by Norbert Preining, inquiries and
+comments should be sent to
+	norbert@preining.info
+
+Norbert Preining
+2019-09-05
+
+Changes:
+2019-09-05	IPAex 4.01
+2016-10-07	IPAex 3.01
+2014-11-14	IPAex 2.01, IPA 3.03
+		inclusion of IPAPGothic (ipagp.ttf) IPAPMincho (ipamp.ttf)
+		recode Readme files to UTF8
+2011-10-29	IPAex 1.03, IPA 3.03
